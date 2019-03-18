@@ -1,0 +1,18 @@
+div.forminputcontainer{
+    margin: 10px 0px;
+}
+input[type=submit]{
+    margin-top: 5px;
+}
+a.button{
+    background-color: lightgrey;
+    border: 1px solid black;
+    padding: 3px;
+    text-decoration: none;
+    color: black;
+    margin-top: 10px;
+    display: inline-block;
+}
+a.button:visited{
+    color: black;
+}
