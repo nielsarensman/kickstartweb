@@ -1,4 +1,4 @@
-#Kickstart web generator#
+#Kickstart web generator
 
 This project is made for php 7.3 and needs a mysql database.
 With this project you can generate kickstart files for the ubuntu installer.
