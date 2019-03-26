@@ -52,6 +52,10 @@ print('
             <input type="password" name="password" id="password" autocomplete="off">
         </div>
         <div class="forminputcontainer">
+            <label for="rootpassword">Root password</label>
+            <input type="password" name="rootpassword" id="rootpassword" autocomplete="off">
+        </div>
+        <div class="forminputcontainer">
             <label for="hostname">Hostname</label>
             <input type="text" name="hostname" id="hostname">
         </div>

@@ -28,8 +28,13 @@ if (isset($_SESSION)){
         $output = $qwr->fetch(PDO::FETCH_ASSOC);
         $_SESSION['text'] .= "\n#System timezone\ntimezone ".$output['Continent']."/".$_SESSION['Tag'];
     }
-    //insert defaults into file
-    $_SESSION['text'] .= "\n#Root password\nrootpw --disabled";
+    //if rootpassword insert into file
+    if (isset($_SESSION['rootpassword'])){
+        $_SESSION['text'] .= "\n#Root password\nrootpw --iscrypted ".$_SESSION['rootpassword'];
+    }
+    else{
+        $_SESSION['text'] .= "\n#Root password\nrootpw --disabled";
+    }
     //if username or fullusername or password insert into file
     if ((isset($_SESSION['username']) && strlen($_SESSION['username']) > 0) || (isset($_SESSION['fullusername']) && strlen($_SESSION['fullusername']) > 0) || (isset($_SESSION['password']))){
         $_SESSION['text'] .= "\n#Initial user\nuser";
