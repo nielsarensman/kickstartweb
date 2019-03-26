@@ -35,6 +35,9 @@ if (isset($_POST)){
     if (isset($_POST['Continent'])){
         $_SESSION['continent'] = $_POST['Continent'];
     }
+    if (isset($_POST['afterinstall'])){
+        $_SESSION['afterinstall'] = $_POST['afterinstall'];
+    }
 }
 //if post doesn't exist redirect
 else {

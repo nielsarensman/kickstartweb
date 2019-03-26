@@ -98,6 +98,16 @@ print('
             <datalist id="City" disabled>
             </datalist>
         </div>
+        <div class="forminputcontainer">
+            <label for="afterinstall">After installation: </label>
+            <select name="afterinstall" id="afterinstall" autocomplete="off">
+                <option value="0"></option>
+                <option value="1" id="afterInstall1">restart</option>
+                <option value="2" id="afterInstall2">poweroff</option>
+                <option value="3" id="afterInstall3">restart and eject disk</option>
+                <option value="4" id="afterInstall4">poweroff and eject disk</option>
+            </select>
+        </div>
         <input type="submit">
     </form>
 </fieldset>
@@ -176,6 +186,7 @@ if (isset($_SESSION['login'])){
     if (isset($preconfig['lang'])) print('document.getElementById("language").value = "'.$preconfig['lang'].'";');
     if (isset($preconfig['locale'])) print('document.getElementById("localeinput").value = "'.$preconfig['locale'].'";');
     if (isset($tz['TzPreId'])) print('document.getElementById("Continent'.$tz['TzPreId'].'").selected = "true";');
+    if (isset($preconfig['afterinstall'])) print('document.getElementById("afterInstall'.$preconfig['afterinstall'].'").selected = "true";');
     if (isset($preconfig['Tag'])) print('document.getElementById("Tag").value = "'.$preconfig['Tag'].'";');
     if (isset($preconfig['username'])) print('document.getElementById("username").value = "'.$preconfig['username'].'";');
     if (isset($preconfig['fullusername'])) print('document.getElementById("fullusername").value = "'.$preconfig['fullusername'].'";');
