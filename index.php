@@ -37,7 +37,7 @@ print('
 </head>
 <body>
 <fieldset>
-    <legend>kickstart</legend>
+    <legend>Kickstart</legend>
     <form action="./dbOrFile/" method="post" name="kickstart">
         <div class="forminputcontainer">
             <label for="username">Username</label>
@@ -50,6 +50,10 @@ print('
         <div class="forminputcontainer">
             <label for="password">Password</label>
             <input type="password" name="password" id="password" autocomplete="off">
+        </div>
+        <div class="forminputcontainer">
+            <label for="rootpassword">Root password</label>
+            <input type="password" name="rootpassword" id="rootpassword" autocomplete="off">
         </div>
         <div class="forminputcontainer">
             <label for="hostname">Hostname</label>
@@ -98,12 +102,27 @@ print('
             <datalist id="City" disabled>
             </datalist>
         </div>
+        <div class="forminputcontainer">
+            <label for="afterinstall">After installation: </label>
+            <select name="afterinstall" id="afterinstall" autocomplete="off">
+                <option value="0"></option>
+                <option value="1" id="afterInstall1">restart</option>
+                <option value="2" id="afterInstall2">poweroff</option>
+                <option value="3" id="afterInstall3">restart and eject disk</option>
+                <option value="4" id="afterInstall4">poweroff and eject disk</option>
+            </select>
+        </div>
+        <div class="forminputcontainer">
+            <label for="packages">Packages (separate each package with a new line): </label><br>
+            <textarea name="packages" id="packages" rows="5" cols="50"></textarea>
+        </div>
         <input type="submit">
     </form>
 </fieldset>
 ');
 if (isset($_SESSION['login']))print('<form action="./" method="post"><input type="submit" name="logout" value="logout"></form>');
 else print('<a href="./login/" class="button">login</a> <a href="./register/" class="button">register</a>');
+print(' <a href="./help/" class="button">help</a>');
 
 //fetch all timezone Cities
 $qwr = $pdo->prepare('SELECT * FROM tz_append ORDER BY TzPreId');
@@ -176,6 +195,7 @@ if (isset($_SESSION['login'])){
     if (isset($preconfig['lang'])) print('document.getElementById("language").value = "'.$preconfig['lang'].'";');
     if (isset($preconfig['locale'])) print('document.getElementById("localeinput").value = "'.$preconfig['locale'].'";');
     if (isset($tz['TzPreId'])) print('document.getElementById("Continent'.$tz['TzPreId'].'").selected = "true";');
+    if (isset($preconfig['afterinstall'])) print('document.getElementById("afterInstall'.$preconfig['afterinstall'].'").selected = "true";');
     if (isset($preconfig['Tag'])) print('document.getElementById("Tag").value = "'.$preconfig['Tag'].'";');
     if (isset($preconfig['username'])) print('document.getElementById("username").value = "'.$preconfig['username'].'";');
     if (isset($preconfig['fullusername'])) print('document.getElementById("fullusername").value = "'.$preconfig['fullusername'].'";');

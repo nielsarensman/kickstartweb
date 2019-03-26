@@ -28,8 +28,13 @@ if (isset($_SESSION)){
         $output = $qwr->fetch(PDO::FETCH_ASSOC);
         $_SESSION['text'] .= "\n#System timezone\ntimezone ".$output['Continent']."/".$_SESSION['Tag'];
     }
-    //insert defaults into file
-    $_SESSION['text'] .= "\n#Root password\nrootpw --disabled";
+    //if rootpassword insert into file
+    if (isset($_SESSION['rootpassword'])){
+        $_SESSION['text'] .= "\n#Root password\nrootpw --iscrypted ".$_SESSION['rootpassword'];
+    }
+    else{
+        $_SESSION['text'] .= "\n#Root password\nrootpw --disabled";
+    }
     //if username or fullusername or password insert into file
     if ((isset($_SESSION['username']) && strlen($_SESSION['username']) > 0) || (isset($_SESSION['fullusername']) && strlen($_SESSION['fullusername']) > 0) || (isset($_SESSION['password']))){
         $_SESSION['text'] .= "\n#Initial user\nuser";
@@ -42,15 +47,25 @@ if (isset($_SESSION)){
     if (isset($_SESSION['fullusername']) && strlen($_SESSION['fullusername']) > 0){
         $_SESSION['text'] .= " --fullname \"".$_SESSION['fullusername']."\"";
     }
-    //if language password into file
+    //if password insert into file
     if (isset($_SESSION['password'])){
         $_SESSION['text'] .= " --iscrypted --password ".$_SESSION['password'];
     }
+    //if afterinstall insert into file
+    if (isset($_SESSION['afterinstall'])){
+        if($_SESSION['afterinstall'] == '1') $_SESSION['text'] .= "\n#Reboot after installation\nreboot";
+        elseif($_SESSION['afterinstall'] == '2') $_SESSION['text'] .= "\n#Shutdown after installation\npoweroff";
+        elseif($_SESSION['afterinstall'] == '3') $_SESSION['text'] .= "\n#Reboot after installation and eject disk\nreboot --eject";
+        elseif($_SESSION['afterinstall'] == '4') $_SESSION['text'] .= "\n#Shutdown after installation and eject disk\npoweroff --eject";
+    }
     //insert defaults into file
-    $_SESSION['text'] .= "\n#Reboot after installation\nreboot\n#Use text mode install\ntext\n#Install OS instead of upgrade\ninstall\n#Use CDROM installation media\ncdrom\n#Network information\nnetwork --bootproto=dhcp";
+    $_SESSION['text'] .= "\n#Use text mode install\ntext\n#Install OS instead of upgrade\ninstall\n#Use CDROM installation media\ncdrom\n#Network information\nnetwork --bootproto=dhcp";
     //if hostname insert into file
     if (isset($_SESSION['hostname']) && strlen($_SESSION['hostname']) > 0){
         $_SESSION['text'] .= "\npreseed netcfg/hostname string ".$_SESSION['hostname'];
+    }
+    if (isset($_SESSION['packages']) && strlen($_SESSION['packages']) > 0){
+        $_SESSION['text'] .= "\n@packages\n".$_SESSION['packages'];
     }
 }
 //include download file

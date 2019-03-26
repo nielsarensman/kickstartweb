@@ -91,7 +91,7 @@ if (isset($_SESSION['login'])){
     $result = ($qwr->fetch(PDO::FETCH_NUM))[0];
     if($result > 0){
         //insert config into config table
-        $qwr = $pdo->prepare('UPDATE config SET keyboard = :keyboard, lang = :lang, locale = :locale, tz_append = :tag, username = :username, fullusername = :fullusername, hostname = :hostname WHERE user = :id');
+        $qwr = $pdo->prepare('UPDATE config SET keyboard = :keyboard, lang = :lang, locale = :locale, tz_append = :tag, username = :username, fullusername = :fullusername, hostname = :hostname, afterinstall = :afterinstall WHERE user = :id');
         $qwr->bindParam(':keyboard', $keyboard['Id']);
         $qwr->bindParam(':lang', $language['Id']);
         $qwr->bindParam(':locale', $locale['Id']);
@@ -100,6 +100,7 @@ if (isset($_SESSION['login'])){
         $qwr->bindParam(':fullusername', $_SESSION['fullusername']);
         $qwr->bindParam(':hostname', $_SESSION['hostname']);
         $qwr->bindParam(':id', $_SESSION['login']);
+        $qwr->bindParam(':afterinstall', $_SESSION['afterinstall']);
         $output = $qwr->execute();
         if ($output != false) {
             print('<h2>succes</h2>');
@@ -110,7 +111,7 @@ if (isset($_SESSION['login'])){
     else{
         
         //insert config into config table
-        $qwr = $pdo->prepare('INSERT INTO config (keyboard, lang, locale, tz_append, username, fullusername, hostname, user) VALUES (:keyboard, :lang, :locale, :tag, :username, :fullusername, :hostname, :user)');
+        $qwr = $pdo->prepare('INSERT INTO config (keyboard, lang, locale, tz_append, username, fullusername, hostname, user, afterinstall) VALUES (:keyboard, :lang, :locale, :tag, :username, :fullusername, :hostname, :user, :afterinstall)');
         $qwr->bindParam(':keyboard', $keyboard['Id']);
         $qwr->bindParam(':lang', $language['Id']);
         $qwr->bindParam(':locale', $locale['Id']);
@@ -119,6 +120,7 @@ if (isset($_SESSION['login'])){
         $qwr->bindParam(':fullusername', $_SESSION['fullusername']);
         $qwr->bindParam(':hostname', $_SESSION['hostname']);
         $qwr->bindParam(':user', $_SESSION['login']);
+        $qwr->bindParam(':afterinstall', $_SESSION['afterinstall']);
         $output = $qwr->execute();
         if ($output != false) {
             print('<h2>succes</h2>');

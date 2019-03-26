@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kickstart web help</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <p>
+        The kickstart file is a file that answers the questions asked during a normal installation of ubuntu. One can use such a file to preform an automated installation.
+        To use the file put it on a (local) web or ftp server and remember the ip address. Then start the machine that you want to preform the installation on with the installation media already connected.<br>
+        When you see a menu like the one below press the <key>⇥ Tab</key> key.
+    </p>
+    <img src="../img/installmenu.png" alt="installmenu">
+    <p>
+        In the menu entry append <i>ks=http://example.com/ks.cfg</i> with example.com replaced by your ip address. Then press <key>⏎ Enter</key> and wait until it finishes, asks a question or fails.
+        If it fails your file is likely incomplete in a way it cannot ask you what it is missing.
+    </p>
+    <p>For more information see: <a href="https://help.ubuntu.com/community/KickstartCompatibility">https://help.ubuntu.com/community/KickstartCompatibility</a> and <a href="https://help.ubuntu.com/lts/installation-guide/i386/ch04s06.html">https://help.ubuntu.com/lts/installation-guide/i386/ch04s06.html</a></p>
+    <a href="../" class="button" onclick="window.history.back()">previous page</a>
+</body>
+</html>
