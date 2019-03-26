@@ -37,7 +37,7 @@ print('
 </head>
 <body>
 <fieldset>
-    <legend>kickstart</legend>
+    <legend>Kickstart</legend>
     <form action="./dbOrFile/" method="post" name="kickstart">
         <div class="forminputcontainer">
             <label for="username">Username</label>
@@ -122,6 +122,7 @@ print('
 ');
 if (isset($_SESSION['login']))print('<form action="./" method="post"><input type="submit" name="logout" value="logout"></form>');
 else print('<a href="./login/" class="button">login</a> <a href="./register/" class="button">register</a>');
+print(' <a href="./help/" class="button">help</a>');
 
 //fetch all timezone Cities
 $qwr = $pdo->prepare('SELECT * FROM tz_append ORDER BY TzPreId');

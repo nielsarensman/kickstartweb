@@ -16,3 +16,11 @@ a.button{
 a.button:visited{
     color: black;
 }
+p{
+    font-family: sans-serif;
+}
+key{
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 0 3px;
+}
