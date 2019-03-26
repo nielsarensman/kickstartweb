@@ -112,6 +112,10 @@ print('
                 <option value="4" id="afterInstall4">poweroff and eject disk</option>
             </select>
         </div>
+        <div class="forminputcontainer">
+            <label for="packages">Packages (separate each package with a new line): </label><br>
+            <textarea name="packages" id="packages" rows="5" cols="50"></textarea>
+        </div>
         <input type="submit">
     </form>
 </fieldset>

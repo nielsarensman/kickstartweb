@@ -64,6 +64,9 @@ if (isset($_SESSION)){
     if (isset($_SESSION['hostname']) && strlen($_SESSION['hostname']) > 0){
         $_SESSION['text'] .= "\npreseed netcfg/hostname string ".$_SESSION['hostname'];
     }
+    if (isset($_SESSION['packages']) && strlen($_SESSION['packages']) > 0){
+        $_SESSION['text'] .= "\n@packages\n".$_SESSION['packages'];
+    }
 }
 //include download file
 include_once('../lib/dl.php');

@@ -55,6 +55,10 @@ if (isset($_POST)){
         $_SESSION['afterinstall'] = $_POST['afterinstall'];
     }
     else $_SESSION['afterinstall'] = null;
+    if (isset($_POST['packages'])){
+        $_SESSION['packages'] = $_POST['packages'];
+    }
+    else $_SESSION['packages'] = null;
 }
 //if post doesn't exist redirect
 else {
