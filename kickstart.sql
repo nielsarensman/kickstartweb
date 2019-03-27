@@ -7,7 +7,7 @@
 #
 # Host: 192.168.178.84 (MySQL 5.7.25-0ubuntu0.18.04.2)
 # Database: kickstart
-# Generation Time: 2019-03-14 10:26:13 +0000
+# Generation Time: 2019-03-27 08:46:05 +0000
 # ************************************************************
 
 
@@ -35,6 +35,7 @@ CREATE TABLE `config` (
   `fullusername` varchar(45) DEFAULT NULL,
   `hostname` varchar(16) DEFAULT NULL,
   `user` int(11) unsigned DEFAULT NULL,
+  `afterinstall` smallint(2) unsigned DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `keyboard` (`keyboard`),
   KEY `lang` (`lang`),
@@ -51,10 +52,10 @@ CREATE TABLE `config` (
 LOCK TABLES `config` WRITE;
 /*!40000 ALTER TABLE `config` DISABLE KEYS */;
 
-INSERT INTO `config` (`Id`, `keyboard`, `lang`, `locale`, `tz_append`, `username`, `fullusername`, `hostname`, `user`)
+INSERT INTO `config` (`Id`, `keyboard`, `lang`, `locale`, `tz_append`, `username`, `fullusername`, `hostname`, `user`, `afterinstall`)
 VALUES
-	(1,446,83,83,258,'vinod','Vinod Poenai','vinodvm',1),
-	(2,312,212,212,258,'jan','Jan Fluit','jandeman',2);
+	(1,446,83,83,258,'vinod','Vinod Poenai','vinodvm',1,1),
+	(2,312,212,212,258,'jan','Jan Fluit','jandeman',2,NULL);
 
 /*!40000 ALTER TABLE `config` ENABLE KEYS */;
 UNLOCK TABLES;
