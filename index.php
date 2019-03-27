@@ -2,7 +2,7 @@
 session_start();
 //database connection
 $db = 'kickstart';
-include_once('../db.php');
+include_once('./lib/db.php');
 //if person clicked logout destroy session and refresh the page so the session is gone
 if(isset($_POST['logout'])) {
     session_destroy();
@@ -33,6 +33,7 @@ $locale = $qwr->fetchAll(PDO::FETCH_ASSOC);
 print('
 <html>
 <head>
+<title>Kickstart web generator</title>
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
