@@ -48,7 +48,7 @@ else {
     </form>
     <script>
     function validatePass() {
-        if (document.forms["register"]["verpass"].value; != document.forms["register"]["pass"].value;) {
+        if (document.forms["register"]["verpass"].value != document.forms["register"]["pass"].value) {
             alert("Passwords are not the same");
             return false;
         }
